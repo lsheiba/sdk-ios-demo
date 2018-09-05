@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "选择“首次”时，每个设备单次扫描只返回一次，选择“每次”时，每个设备单次扫描可能会回调多次，不过信号强度会不同。"; ObjectID = "23O-ht-WyT"; */
+"23O-ht-WyT.text" = "When selecting first time，each device returns only once in a single scan. When selecting every time，a single scan per device may be called back multiple times，however, the signal strength will be different.";
+
+/* Class = "UILabel"; text = "kg 公斤 默认值\nlb磅，所有称都能够支持这个单位\n斤，称端如果不支持，则会显示kg\nst 英石，如果称端不支持会显示lb"; ObjectID = "9Ps-uL-odr"; */
+"9Ps-uL-odr.text" = "Kg default value \nlb pounds, all scales can support this unit \n kg, if the end is not supported, it will display kg\nst stone, if it is not supported, it will display lb";
+
+/* Class = "UILabel"; text = "身高"; ObjectID = "AIu-sC-jGQ"; */
+"AIu-sC-jGQ.text" = "height";
+
+/* Class = "UILabel"; text = "设置用户的资料，计算体脂率时会需要"; ObjectID = "BEe-80-egg"; */
+"BEe-80-egg.text" = "Set the user's data, you will need to calculate the body fat rate";
+
+/* Class = "UILabel"; text = "男的为“male”，女的为“female”。"; ObjectID = "CJ0-xi-cY8"; */
+"CJ0-xi-cY8.text" = "Male is \"male\”，The woman is \"female\".";
+
+/* Class = "UILabel"; text = "st"; ObjectID = "JIH-K9-hdB"; */
+"JIH-K9-hdB.text" = "st";
+
+/* Class = "UILabel"; text = "体重单位"; ObjectID = "Mcz-mP-fqI"; */
+"Mcz-mP-fqI.text" = "Weight unit";
+
+/* Class = "UILabel"; text = "女"; ObjectID = "Mqv-i1-EKQ"; */
+"Mqv-i1-EKQ.text" = "Female";
+
+/* Class = "UITextField"; placeholder = "单行输入"; ObjectID = "PF0-Gm-ugP"; */
+"PF0-Gm-ugP.placeholder" = "Single line input";
+
+/* Class = "UITextField"; text = "123456"; ObjectID = "PF0-Gm-ugP"; */
+"PF0-Gm-ugP.text" = "123456";
+
+/* Class = "UILabel"; text = "170cm"; ObjectID = "QMn-gR-7U7"; */
+"QMn-gR-7U7.text" = "170cm";
+
+/* Class = "UILabel"; text = "扫描模式"; ObjectID = "TyE-x5-mL2"; */
+"TyE-x5-mL2.text" = "Scan mode";
+
+/* Class = "UILabel"; text = "首次"; ObjectID = "ak4-yo-iBP"; */
+"ak4-yo-iBP.text" = "first";
+
+/* Class = "UILabel"; text = "性别"; ObjectID = "bUX-lJ-cjv"; */
+"bUX-lJ-cjv.text" = "gender";
+
+/* Class = "UINavigationItem"; title = "设置"; ObjectID = "jEW-Cm-03T"; */
+"jEW-Cm-03T.title" = "Setting";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "ldQ-KI-MRw"; */
+"ldQ-KI-MRw.normalTitle" = "determine";
+
+/* Class = "UILabel"; text = "每次"; ObjectID = "lhE-J0-DCv"; */
+"lhE-J0-DCv.text" = "Each";
+
+/* Class = "UILabel"; text = "年龄范围为3~80岁"; ObjectID = "pQM-0T-rxA"; */
+"pQM-0T-rxA.text" = "Age range is 3 to 80 years old";
+
+/* Class = "UILabel"; text = "用户id"; ObjectID = "qnf-74-lzx"; */
+"qnf-74-lzx.text" = "User id";
+
+/* Class = "UILabel"; text = "lb"; ObjectID = "qt1-0u-0ry"; */
+"qt1-0u-0ry.text" = "lb";
+
+/* Class = "UILabel"; text = "斤"; ObjectID = "snv-jb-SvG"; */
+"snv-jb-SvG.text" = "斤";
+
+/* Class = "UILabel"; text = "用户资料"; ObjectID = "thy-Ig-HxL"; */
+"thy-Ig-HxL.text" = "user information";
+
+/* Class = "UILabel"; text = "男"; ObjectID = "uAy-MK-SoI"; */
+"uAy-MK-SoI.text" = "male";
+
+/* Class = "UILabel"; text = "生日"; ObjectID = "uKd-0o-5b3"; */
+"uKd-0o-5b3.text" = "birthday";
+
+/* Class = "UILabel"; text = "kg"; ObjectID = "uhS-O7-K8r"; */
+"uhS-O7-K8r.text" = "kg";
+
+/* Class = "UILabel"; text = "蓝牙相关设置"; ObjectID = "yjN-QA-t3S"; */
+"yjN-QA-t3S.text" = "Bluetooth related settings";
+
+/* Class = "UILabel"; text = "1992-12-10"; ObjectID = "yvQ-xc-TZD"; */
+"yvQ-xc-TZD.text" = "1992-12-10";
+
+/* Class = "UILabel"; text = "单位是cm，范围为40~240cm"; ObjectID = "zTN-FR-JaZ"; */
+"zTN-FR-JaZ.text" = "The unit is cm and the range is 40~240cm";
