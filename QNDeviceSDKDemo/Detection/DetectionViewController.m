@@ -42,7 +42,7 @@ typedef enum{
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"测量";
+    self.navigationItem.title = @"measuring";
     self.tableView.estimatedSectionFooterHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedRowHeight = 0;
@@ -52,7 +52,7 @@ typedef enum{
     self.bleApi.connectionChangeListener = self;
     self.bleApi.dataListener = self;
     self.bleApi.bleStateListener = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"return" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
 }
 
 - (void)back {
@@ -63,7 +63,7 @@ typedef enum{
 }
 
 
-#pragma mark 设置设备各个阶段状态
+#pragma mark Set the status of each phase of the device
 - (void)setCurrentStyle:(DeviceStyle)currentStyle {
     _currentStyle = currentStyle;
     switch (_currentStyle) {
@@ -99,67 +99,67 @@ typedef enum{
             break;
     }
 }
-#pragma - UI处理
-#pragma mark 正在扫描状态UI
+#pragma - UI processing
+#pragma mark Scanning status UI
 - (void)setScanningStyleUI {
-    [self.scanBtn setTitle:@"正在扫描" forState:UIControlStateNormal];
+    [self.scanBtn setTitle:@"Scanning" forState:UIControlStateNormal];
     self.headerView.hidden = NO;
-    self.styleLabel.text = @"点击链接设备";
+    self.styleLabel.text = @"Clink on device link";
     self.unstableWeightLabel.text = @"";
     self.tableView.hidden = NO;
 }
 
-#pragma mark 正在链接状态UI
+#pragma mark Linking status UI
 - (void)setLingingStyleUI {
-    [self.scanBtn setTitle:@"断开连接" forState:UIControlStateNormal];
-    self.styleLabel.text = @"正在连接";
+    [self.scanBtn setTitle:@"Disconnect" forState:UIControlStateNormal];
+    self.styleLabel.text = @"connecting";
     self.unstableWeightLabel.text = @"";
     self.tableView.hidden = YES;
     self.headerView.hidden = YES;
 }
 
-#pragma mark 链接成功状态UI
+#pragma mark Link success status UI
 - (void)setLingSucceedStyleUI {
-    [self.scanBtn setTitle:@"断开连接" forState:UIControlStateNormal];
-    self.styleLabel.text = @"连接成功";
+    [self.scanBtn setTitle:@"Disconnect" forState:UIControlStateNormal];
+    self.styleLabel.text = @"connection succeded";
     self.unstableWeightLabel.text = @"0.0";
     self.tableView.hidden = YES;
     self.headerView.hidden = YES;
 }
 
-#pragma mark 测量体重状态UI
+#pragma mark Measuring weight status UI
 - (void)setMeasuringWeightStyleUI {
-    self.styleLabel.text = @"正在称量";
+    self.styleLabel.text = @"Weighing";
 }
 
-#pragma mark 测量阻抗状态UI
+#pragma mark Measuring Impedance status UI
 - (void)setMeasuringSucceedStyleUI {
-    self.styleLabel.text = @"正在测阻抗";
+    self.styleLabel.text = @"Measuring impedance";
 }
 
-#pragma mark 测量完成状态UI
+#pragma mark Measurement completion status UI
 - (void)setMeasuringResistanceStyleUI {
-    self.styleLabel.text = @"测量完成";
+    self.styleLabel.text = @"Measurement completed";
     self.tableView.hidden = NO;
 }
 
-#pragma mark 断开连接/称关机状态UI
+#pragma mark Disconnect/called shutdown status UI
 - (void)setDisconnectStyleUI {
-    [self.scanBtn setTitle:@"扫描" forState:UIControlStateNormal];
-    self.styleLabel.text = @"连接已断开";
+    [self.scanBtn setTitle:@"scanning" forState:UIControlStateNormal];
+    self.styleLabel.text = @"The line is disconnected";
 }
 
-#pragma mark 默认状态UI
+#pragma mark Default state UI
 - (void)setNormalStyleUI {
-    [self.scanBtn setTitle:@"扫描" forState:UIControlStateNormal];
+    [self.scanBtn setTitle:@"scanning" forState:UIControlStateNormal];
     self.styleLabel.text = @"";
     self.unstableWeightLabel.text = @"";
     self.tableView.hidden = YES;
     self.headerView.hidden = NO;
 }
 
-#pragma mark - 蓝牙状态处理
-#pragma mark 开始扫描附近设备
+#pragma mark - Bluetooth status processing
+#pragma mark Start scanning nearby device
 - (void)startScanDevice {
     [self.deviceAry removeAllObjects];
     [self.tableView reloadData];
@@ -168,21 +168,21 @@ typedef enum{
     }];
 }
 
-#pragma mark 链接设备设备
+#pragma mark Link device
 - (void)connectDevice:(QNBleDevice *)device {
     [_bleApi stopBleDeviceDiscorvery:^(NSError *error) {
         
     }];
 }
 
-#pragma mark 断开设备
+#pragma mark Disconnect device
 - (void)disconnectDevice {
     [_bleApi disconnectDevice:nil callback:^(NSError *error) {
         
     }];
 }
 
-#pragma mark 停止扫描附近设备
+#pragma mark Stop scanning nearby devices
 - (void)stopScanDevice {
     [_bleApi stopBleDeviceDiscorvery:^(NSError *error) {
         
@@ -190,7 +190,7 @@ typedef enum{
 }
 
 #pragma mark - QNBleDeviceDiscorveryListener
-- (void)onDeviceDiscover:(QNBleDevice *)device {//该方法会在发现设备后回调
+- (void)onDeviceDiscover:(QNBleDevice *)device {//This method will call back after discovering the device
     for (QNBleDevice *item in self.deviceAry) {
         if ([item.mac isEqualToString:device.mac]) {
             return;
@@ -201,23 +201,23 @@ typedef enum{
 }
 
 #pragma mark - QNBleConnectionChangeListener
-- (void)onScaleStateChange:(QNBleDevice *)device scaleState:(QNScaleState)state{//秤连接或测量状态变化
-    if (state == QNScaleStateConnected) {//链接成功
+- (void)onScaleStateChange:(QNBleDevice *)device scaleState:(QNScaleState)state{//Scale connection or measurement status change
+    if (state == QNScaleStateConnected) {//Successful link
           self.currentStyle = DeviceStyleLingSucceed;
-    }else if (state == QNScaleStateRealTime){//测量体重
+    }else if (state == QNScaleStateRealTime){//Measuring weight
         self.currentStyle = DeviceStyleMeasuringWeight;
-    }else if (state == QNScaleStateBodyFat){//测量阻抗
+    }else if (state == QNScaleStateBodyFat){//Measuring impedance
         self.currentStyle = DeviceStyleMeasuringResistance;
-    }else if (state == QNScaleStateHeartRate){//测量心率
+    }else if (state == QNScaleStateHeartRate){//Measuring heart rate
         self.currentStyle = DeviceStyleMeasuringHeartRate;
-    }else if (state == QNScaleStateMeasureCompleted){//测量完成
+    }else if (state == QNScaleStateMeasureCompleted){//Measurement completed
         self.currentStyle = DeviceStyleMeasuringSucceed;
-    }else if (state == QNScaleStateLinkLoss){//断开连接/称关机
+    }else if (state == QNScaleStateLinkLoss){//Disconnect/called shutdown
         self.currentStyle = DeviceStyleNormal;
     }
 }
 
-#pragma mark - 测量QNDataListener处理
+#pragma mark - Measuring QNDataListener processing
 - (void)onGetUnsteadyWeight:(QNBleDevice *)device weight:(double)weight {
     weight = [self.bleApi convertWeightWithTargetUnit:weight unit:[self.bleApi getConfig].unit];
     self.unstableWeightLabel.text = [NSString stringWithFormat:@"%.2f",weight];
