@@ -79,6 +79,7 @@
 		D2B9E98520723DEC0020C2B6 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		D2B9E98620723DEC0020C2B6 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		D2B9E98720723DEC0020C2B6 /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
+		D5541F31213FC33800C7A0C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +170,8 @@
 				D2B9E97C20723DEC0020C2B6 /* DetectionViewController.m */,
 				D2B9E97D20723DEC0020C2B6 /* ScaleDataCell.xib */,
 				D2B9E97E20723DEC0020C2B6 /* DeviceTableViewCell.h */,
-				D2B9E97F20723DEC0020C2B6 /* ScaleDataCell.h */,
 				D2B9E98020723DEC0020C2B6 /* DeviceTableViewCell.xib */,
+				D2B9E97F20723DEC0020C2B6 /* ScaleDataCell.h */,
 				D2B9E98120723DEC0020C2B6 /* DetectionViewController.xib */,
 				D2B9E98320723DEC0020C2B6 /* ScaleDataCell.m */,
 				D2B9E98420723DEC0020C2B6 /* DeviceTableViewCell.m */,
@@ -273,6 +274,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D232D6512004DE2D00AABD67 /* Base */,
+				D5541F31213FC33800C7A0C3 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -410,6 +412,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/QNDeviceSDKDemo/QNDeviceSDK";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = io.kuberlab.QNSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -429,6 +432,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/QNDeviceSDKDemo/QNDeviceSDK";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = io.kuberlab.QNSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
