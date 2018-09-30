@@ -13,18 +13,20 @@
 @protocol QNDataListener <NSObject>
 
 /**
- 实时数据的监听
+ 
+ Real-time data monitoring
  
  @param device QNBleDevice
- @param weight 实时体重
+ @param weight Real-time weight
  */
 - (void)onGetUnsteadyWeight:(QNBleDevice *)device weight:(double)weight;
 
 /**
- 稳定数据的监听
+ 
+ Stable data monitoring
  
  @param device QNBleDevice
- @param scaleData 数据结果
+ @param scaleData Data result
  */
 - (void)onGetScaleData:(QNBleDevice *)device data:(QNScaleData *)scaleData;
 

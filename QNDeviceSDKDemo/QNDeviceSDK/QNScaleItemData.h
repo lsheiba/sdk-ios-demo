@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 /**
- 指标的数值类型
+ 
+ Numerical type of indicator
 
- - QNValueTypeDouble: 浮点型
- - QNValueTypeInt: 整形
+ - QNValueTypeDouble: Floating point
+ - QNValueTypeInt: Shaping
  */
 typedef NS_ENUM(NSUInteger, QNValueType) {
     QNValueTypeDouble = 0,
@@ -22,37 +23,37 @@ typedef NS_ENUM(NSUInteger, QNValueType) {
 
 /** 指标类型 */
 typedef NS_ENUM(NSInteger, QNScaleType) {
-    QNScaleTypeWeight = 1, //体重
+    QNScaleTypeWeight = 1, //body weight
     QNScaleTypeBMI = 2, //BMI
-    QNScaleTypeBodyFatRage = 3, //体脂率
-    QNScaleTypeSubcutaneousFat = 4, //皮下脂肪率
-    QNScaleTypeVisceralFat = 5, //内脏脂肪等级
-    QNScaleTypeBodyWaterRate = 6, //身体水分率
-    QNScaleTypeMuscleRate = 7, //骨骼肌率
-    QNScaleTypeBoneMass = 8, //骨量
-    QNScaleTypeBMR = 9, //基础代谢率
-    QNScaleTypeBodyType = 10, //体型
-    QNScaleTypeProtein = 11, //蛋白质
-    QNScaleTypeLeanBodyWeight = 12, //去脂体重
-    QNScaleTypeMuscleMass = 13, //肌肉量
-    QNScaleTypeMetabolicAge = 14, //体年龄
-    QNScaleTypeHealthScore = 15, //分数
-    QNScaleTypeHeartRate = 16, //心率
-    QNScaleTypeHeartIndex = 17, //心脏指数
+    QNScaleTypeBodyFatRage = 3, //Body fat rate
+    QNScaleTypeSubcutaneousFat = 4, //Subcutaneous fat rate
+    QNScaleTypeVisceralFat = 5, //Visceral fat grade
+    QNScaleTypeBodyWaterRate = 6, //Body moisture rate
+    QNScaleTypeMuscleRate = 7, //Skeletal muscle rate
+    QNScaleTypeBoneMass = 8, //Bone mass
+    QNScaleTypeBMR = 9, //Basal metabolic rate
+    QNScaleTypeBodyType = 10, //Body type
+    QNScaleTypeProtein = 11, //protein
+    QNScaleTypeLeanBodyWeight = 12, //Fat loss
+    QNScaleTypeMuscleMass = 13, //Muscle mass
+    QNScaleTypeMetabolicAge = 14, //Body age
+    QNScaleTypeHealthScore = 15, //fraction
+    QNScaleTypeHeartRate = 16, //Heart rate
+    QNScaleTypeHeartIndex = 17, //Cardiac index
 };
 
 @interface QNScaleItemData : NSObject
 
-/** 指标类型 */
+/** Indicator type */
 @property (nonatomic, readonly, assign) QNScaleType type;
 
-/** 指标数值 */
+/** Indicator value */
 @property (nonatomic, readonly, assign) double value;
 
-/** 指标值类型 */
+/** Indicator value type */
 @property (nonatomic, readonly, assign) QNValueType valueType;
 
-/** 指标名称 */
+/** Indicator name */
 @property (nonatomic, readonly, strong) NSString *name ;
 
 @end

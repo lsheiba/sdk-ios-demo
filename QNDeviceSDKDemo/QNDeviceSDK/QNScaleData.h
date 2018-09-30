@@ -12,14 +12,14 @@
 
 @interface QNScaleData : NSObject
 
-/** 测量数据的拥有者 */
+/** Owner of measurement data */
 @property (nonatomic, readonly, strong) QNUser *user;
 
-/** 测量数据测量时间 */
+/** Measurement data measurement time */
 @property (nonatomic, readonly, strong) NSDate *measureTime;
 
 /**
- 通过调用该方法获取当个指标的详情
+ Get the details of the indicator by calling this method
 
  @param type QNScaleType
  @return QNScaleItemData
@@ -28,18 +28,18 @@
 
 
 /**
- 获取当个指标的数值
+ Get the value of the indicator
 
  @param type QNScaleType
- @return 指标数值
+ @return Indicator value
  */
 - (double)getItemValue:(QNScaleType)type;
 
 
 /**
- 获取该次测量后的指标详情
+ Get the details of the indicator after this measurement
 
- @return 指标详情的集合
+ @return Collection of indicator details
  */
 - (NSArray <QNScaleItemData *> *)getAllItem;
 

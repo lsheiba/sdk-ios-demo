@@ -16,79 +16,85 @@
 #import "QNConfig.h"
 
 /**
- 此SDK为轻牛旗下设备连接工具的静态库，使用时需要向轻牛官方获取 "appId" 否则无法正常使用该SDK
  
- 当前版本【 0.3.1 】
+ This SDK is a static library of the equipment connection tool of the light cow. It needs to obtain the "appId" from the light cattle official. Otherwise, the SDK cannot be used normally.
  
- SDK最低配置8.0的系统
+ current version【 0.3.1 】
  
- 工程的配置说明:
- 1.苹果官方规定在iOS10.0以后（包括10.0）必须在Info.plist中有对 "Privacy - Bluetooth Peripheral Usage Description" 键 进行蓝牙的使用说明，否则无法使用系统蓝牙
- 2.引入SDK路径 【TARGETS】-> 【Build Setting】->【Search Paths】->【LibrarySearch Paths】中添加SDK路径
- 3.配置链接器 【TARGETS】-> 【Build Setting】-> 【Linking】-> 【Other Linker Flags】中添加 "-ObjC"、"-all_load"、"-force_load [SDK路径]" 其中之一
+ SDK minimum configuration 8.0 system
  
+ Project configuration instructions:
+ 1. Apple officially has to use the "Privacy - Bluetooth Peripheral Usage Description" button in Info.plist after iOS10.0 (including 10.0), otherwise the system Bluetooth cannot be used.
+ 2. Introduce SDK path [TARGETS]-> [Build Setting]->[Search Paths]->[LibrarySearch Paths]Add SDK path
+ 3. Configure the linker [TARGETS]-> [Build Setting]-> [Linking]-> [Other Linker Flags] add "-ObjC", "-all_load", "-force_load [SDK path]"
  
- 秤测量方法说明：
- 1. 必须光脚测量，才能测到人体生物阻抗
+ Scale measurement method description:
  
- 
- 关于秤数据的说明：
- 1. 在连接上秤的时候测量，测量完毕后数据会立即上传
- 2. 在未连接秤的时候测量，测量数据会自动存储到秤端，详细说明请参考"QNScaleStoreData"存储数据类
- 
- 秤有广播的两种情况:
- 1. 秤亮屏的时候，会发出广播
- 2. 当秤有存储数据的时候，即使秤处于灭屏的状态下也会发广播
+ 1. It is necessary to measure bare feet to measure human bioimpedance
  
  
- 使用流程:
- 1. 使用"+ (QNBleApi *)sharedBleApi"初始化SDK
- 2. 是否需要系统的蓝牙弹框（此弹框是系统在初始化蓝牙管理的时候会判断蓝牙是否打开，如果蓝牙为关闭状态，系统会自动弹框提示）,如果需要先调用"- (QNConfig *)getConfig"方法获取配置项，然后直接设置对应的属性，如果不需要弹框，直接跳过该步
- 2. 使用"- (void)initSdk:(NSString *)appId firstDataFile:(NSString *)dataFile callback:(QNResultCallback)callback"注册SDK
- 3. 遵循相应的代理并实现相应的代理方法
- 4. 调用"- (QNConfig *)getConfig"方法获取配置项，设置相应的开关，比如返回的设备类型、统一个设备是否返回多次等，该步也可以在第二步的时候一并设置
- 4. 调用扫描方法 "- (void)startBleDeviceDiscovery:(QNResultCallback)callback",app处理扫描的设备（比如加入数组实现列表扫描到设备等）
- 5. 调用连接方法，连接相应的设备 "- (void)connectDevice:(QNBleDevice *)device user:(QNUser *)user callback:(QNResultCallback)callback"
- 6. 代理方法回调测量的各个状态、存储数据、实时体重、测量结果等数据
- 7. 测量完毕后，可调用"- (void)disconnectDevice:(QNBleDevice *)device callback:(QNResultCallback)callback"方法，断开设备的连接
  
+ Description of scale data:
+
+ 1. Measure when connecting the scale, the data will be uploaded immediately after the measurement is completed.
+ 2. When the scale is not connected, the measurement data will be automatically stored to the scale end. For details, please refer to "QNScaleStoreData" to store the data class.
+ 
+ There are two situations in which the scale has a broadcast:
+ 1. When the scale is on the screen, a broadcast will be issued.
+ 2. When the scale has stored data, it will broadcast even if the scale is off.
+ 
+ 
+ manual:
+ 
+ 1. Initialize the SDK with "+ (QNBleApi *)sharedBleApi"
+ 2. Do you need the system's Bluetooth bulletin box? This box will determine whether the Bluetooth is turned on when the Bluetooth management is initialized. If the Bluetooth is off, the system will automatically pop up the box. If you need to call "- (QNConfig *) ) getConfig" method to get the configuration item, and then directly set the corresponding attribute, if you do not need to play the box, skip this step directly
+ 2. Use "- (void)initSdk:(NSString *)appId firstDataFile:(NSString *)dataFile callback:(QNResultCallback)callback"Register SDK
+ 3. Follow the appropriate agent and implement the corresponding proxy method
+ 4. Call the "- (QNConfig *) getConfig" method to get the configuration item and set the corresponding switch, such as the type of the returned device, whether the device returns multiple times, etc. This step can also be set in the second step.
+ 4. Call the scan method "- (void) startBleDeviceDiscovery: (QNResultCallback) callback", the app processes the scanned device (such as adding an array to implement list scanning to the device, etc.)
+ 5. Call the connection method and connect the corresponding device "- (void)connectDevice:(QNBleDevice *)device user:(QNUser *)user callback:(QNResultCallback)callback"
+ 6. Agent method callback measurement of each state, stored data, real-time weight, measurement results and other data
+ 7. After the measurement is completed, you can call the "- (void)disconnectDevice:(QNBleDevice *)device callback:(QNResultCallback)callback" method to disconnect the device.
  */
 
 @interface QNBleApi : NSObject
 
-/** 是否打开调试开关 默认为NO (建议发布版本时,设置为NO) */
+/** Whether to turn on the debug switch The default is NO (when the release version is recommended, set to NO) */
 @property (nonatomic, assign, class) BOOL debug;
 
 /**
- 发现设备监听，该监听必须实现，否则无法获取搜索到的设备信息
- 可在 QNBleDeviceDiscorveryProtocol.h 中查看详细信息
+ 
+ The device is monitored. The listener must be implemented. Otherwise, the searched device information cannot be obtained.
+ Details can be found in QNBleDeviceDiscorveryProtocol.h
  
  */
 @property (nonatomic, weak) id<QNBleDeviceDiscoveryListener> discoveryListener;
 
 /**
- 设备状态的监听
- 可在 QNBleConnectionChangeProtocol.h 中查看详细信息
+ Device status monitoring
+ Details can be found in QNBleConnectionChangeProtocol.h
  
  */
 @property (nonatomic, weak) id<QNBleConnectionChangeListener> connectionChangeListener;
 
 /**
- 测量数据的监听，该监听必须实现
- 可在 QNDataProtocol.h 中查看详细信息
+ 
+ Monitoring of measurement data, the monitor must be implemented
+ Details can be found in QNDataProtocol.h
  
  */
 @property (nonatomic, weak) id<QNDataListener> dataListener;
 
 /**
- 系统蓝牙状态的监听
- 可在 QQNBleStateProtocol.h 中查看详细信息
+ System Bluetooth status monitoring
+ Details can be viewed in QQNBleStateProtocol.h
  
  */
 @property (nonatomic, weak) id<QNBleStateListener> bleStateListener;
 
 /**
- 初始化SDK
+ 
+ Initialize the SDK
 
  @return QNBleApi
  */
@@ -96,54 +102,56 @@
 
 
 /**
- 注册SDK
- 必须先注册SDK后使用其他操作
- appid以及初始配置文件请向轻牛官方洽谈
-
- @param appId 需要向官方获取正确的appid
- @param dataFile 配置文件路径
- @param callback 结果回调
+ 
+ Register SDK
+ You must first register the SDK and use other operations.
+ Appid and initial configuration file, please talk to the light cattle official
+ 
+ @param appId Need to get the correct appid to the official
+ @param dataFile Configuration file path
+ @param callback Result callback
  */
 - (void)initSdk:(NSString *)appId firstDataFile:(NSString *)dataFile callback:(QNResultCallback)callback;
 
 
 /**
- 扫描设备
+ 
+ Scanning device
 
- @param callback 结果回调
+ @param callback Result callback
  */
 - (void)startBleDeviceDiscovery:(QNResultCallback)callback;
 
 
 /**
- 停止扫描
+ Stop scanning
 
- @param callback 结果回调
+ @param callback Result callback
  */
 - (void)stopBleDeviceDiscorvery:(QNResultCallback)callback;
 
 
 /**
- 连接设备
+ Connecting device
 
- @param device 连接的设备(该设备对象必须是搜索返回的设备对象)
- @param user 用户信息 (该用户信息对象，必须使用以下"buildUser"构建对象)
- @param callback 结果回调
+ @param device Connected device (the device object must be the device object returned by the search)
+ @param user User Information (This user information object must be built using the following "buildUser")
+ @param callback Result callback
  */
 - (void)connectDevice:(QNBleDevice *)device user:(QNUser *)user callback:(QNResultCallback)callback;
 
 
 /**
- 断开设备的连接
+ Disconnect the device
 
- @param device 当前连接的设备(可不传)
- @param callback 结果回调
+ @param device Currently connected device (may not pass)
+ @param callback Result callback
  */
 - (void)disconnectDevice:(QNBleDevice *)device callback:(QNResultCallback)callback;
 
 
 /**
- 获取SDK的当前设置情况
+ Get the current settings of the SDK
 
  @return QNConfig
  */
@@ -151,22 +159,22 @@
 
 
 /**
- 根据提供的kg数值的体重，转化为指定单位的数值
+ Converted to the value of the specified unit based on the weight of the supplied kg value
 
- @param kgWeight kg单位的体重
- @param unit QNUnit kg、lb，所有秤都能够支持这个单位; 斤，秤端如果不支持，则会显示kg (不支持ST的转换)
- @return 结果回调
+ @param kgWeight Weight of kg unit
+ @param unit QNUnit kg、lb，All scales can support this unit; kg, if the scale end does not support, it will display kg (not support ST conversion)
+ @return Result callback
  */
 - (double)convertWeightWithTargetUnit:(double)kgWeight unit:(QNUnit)unit;
 
 /**
- 建立用户模型
+ Building a user model
  
- @param userId 用户id
- @param height 用户身高
- @param gender 用户性别 male female
- @param birthday 用户的出生日期 age 3~80
- @param callback 结果的回调
+ @param userId User id
+ @param height User height
+ @param gender User gender male female
+ @param birthday User's date of birth age 3~80
+ @param callback Result callback
  @return QNUser
  */
 - (QNUser *)buildUser:(NSString *)userId height:(int)height gender:(NSString *)gender birthday:(NSDate *)birthday callback:(QNResultCallback)callback;
