@@ -38,7 +38,7 @@
 
 @implementation ViewController
 
-#pragma mark - 生命周期
+#pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.bleApi = [QNBleApi sharedBleApi];
@@ -76,14 +76,14 @@
     }
 }
 
-#pragma mark - 确认用户ID
-#pragma mark 点击键盘Return键
+#pragma mark - Confirm user ID
+#pragma mark Click the keyboard Return button
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
 
-#pragma mark - 选择身高
+#pragma mark - Choose height
 - (IBAction)selectHeight:(UITapGestureRecognizer *)sender {
     self.pickerView.type = PickerViewTypeHeight;
     self.pickerView.hidden = NO;
@@ -93,7 +93,7 @@
     self.heightLabel.text = [NSString stringWithFormat:@"%ldcm",height];
 }
 
-#pragma mark - 选择生日
+#pragma mark - Choose birthday
 - (IBAction)selectBirthday:(UITapGestureRecognizer *)sender {
     self.pickerView.type = PickerViewTypeBirthday;
     self.pickerView.defaultBirthday = self.birthdayDate;
@@ -105,23 +105,23 @@
     self.birthdayLabel.text = [self.pickerView.dateFormatter stringFromDate:birthday];
 }
 
-#pragma mark - 选中性别
-#pragma mark 选中性别-女
+#pragma mark - Selected gender
+#pragma mark Selected gender - female
 - (IBAction)selectFemaleBtn:(UIButton *)sender {
     if (sender.isSelected) return;
     sender.selected = YES;
     self.maleBtn.selected = NO;
 }
 
-#pragma mark 选中性别-男
+#pragma mark Selected gender - male
 - (IBAction)selectMaleBtn:(UIButton *)sender {
     if (sender.isSelected) return;
     sender.selected = YES;
     self.femaleBtn.selected = NO;
 }
 
-#pragma mark - 选扫描模式
-#pragma mark 选中扫描模式-每次
+#pragma mark - Scan mode
+#pragma mark Check scan mode - every time
 - (IBAction)selectEveryBtn:(UIButton *)sender {
     if (sender.isSelected) return;
     sender.selected = YES;
@@ -129,7 +129,7 @@
     self.config.allowDuplicates = YES;
 }
 
-#pragma mark 选中扫描模式-首次
+#pragma mark Check scan mode - first time
 - (IBAction)selectFirstBtn:(UIButton *)sender {
     if (sender.isSelected) return;
     sender.selected = YES;
@@ -137,23 +137,23 @@
     self.config.allowDuplicates = NO;
 }
 
-#pragma mark - 选称量单位
-#pragma mark 选中称量单位-斤
+#pragma mark - Weighing unit
+#pragma mark Select the weighing unit - kg
 - (IBAction)selectJinBtn:(UIButton *)sender {
     [self setSelectUnitWith:sender];
 }
 
-#pragma mark 选中称量单位-st
+#pragma mark Select weighing unit - st
 - (IBAction)selectStBtn:(UIButton *)sender {
     [self setSelectUnitWith:sender];
 }
 
-#pragma mark 选中称量单位-kg
+#pragma mark Selected weighing unit - kg
 - (IBAction)selectKgBtn:(UIButton *)sender {
     [self setSelectUnitWith:sender];
 }
 
-#pragma mark 选中称量单位-lb
+#pragma mark Selected weighing unit - lb
 - (IBAction)selectLbBtn:(UIButton *)sender {
     [self setSelectUnitWith:sender];
 }
@@ -163,7 +163,7 @@
     _selectBtn.selected = NO;
     sender.selected = YES;
     _selectBtn = sender;
-    //保存设置秤的单位 0 为 kg，默认值;  1 为 lb  2 为 斤 3 为 st
+    //The unit for saving the set scale is 0, the default value; 1 is lb 2 for kg 3 for st
     int index = (int)sender.tag - 100;
     switch (index) {
             case 1:
@@ -185,7 +185,7 @@
 }
 
 
-#pragma mark - 点击确认跳转扫描
+#pragma mark - Click to confirm jump scan
 - (IBAction)clickConfirm:(UIButton *)sender {
     int height = [[self.heightLabel.text stringByReplacingOccurrencesOfString:@"cm" withString:@""] intValue];
     QNUser *user = [_bleApi buildUser:self.userIdTF.text height:height gender:self.femaleBtn.selected ? @"female" : @"male" birthday:self.birthdayDate callback:^(NSError *error) {

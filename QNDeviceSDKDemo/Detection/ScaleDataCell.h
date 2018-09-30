@@ -4,7 +4,7 @@
 //
 //  Created by Yolanda on 2018/3/19.
 //  Copyright © 2018年 Yolanda. All rights reserved.
-//  测量数据cell
+//  Measurement data cell
 
 #import <UIKit/UIKit.h>
 #import "QNDeviceSDK.h"

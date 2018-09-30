@@ -7,8 +7,8 @@
 //
 //关系类型
 typedef enum{
-    PickerViewTypeHeight = 0,//身高
-    PickerViewTypeBirthday= 1,//生日
+    PickerViewTypeHeight = 0,//height
+    PickerViewTypeBirthday= 1,//birthday
 }PickerViewType;
 
 
@@ -26,18 +26,18 @@ typedef enum{
 @end
 
 @interface PickerView : UIView
-/** 显示类型*/
+/** Display type*/
 @property (nonatomic, assign) PickerViewType type;
 
-/** 默认显示生日*/
+/** Default display birthday*/
 @property (nonatomic, strong) NSDate *defaultBirthday;
 
-/** 默认显示高度*/
+/** Default display height*/
 @property (nonatomic, assign) NSInteger defaultHeight;
 
 @property (nonatomic, weak) id<PickerViewDelegate> pickerViewDelegate;
 
-/** 时间转化格式*/
+/** Time conversion format*/
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 + (instancetype)secPickerView;

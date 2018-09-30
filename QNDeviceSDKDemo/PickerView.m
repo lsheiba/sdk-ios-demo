@@ -106,7 +106,7 @@
 }
 
 
-#pragma mark - pickerView的代理方法
+#pragma mark - pickerView proxy method
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     if (pickerView == self.heightPickerView) {
         return self.heightSource.count;

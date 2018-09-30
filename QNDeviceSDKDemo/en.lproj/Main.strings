@@ -1,14 +1,14 @@
 
-/* Class = "UILabel"; text = "选择“首次”时，每个设备单次扫描只返回一次，选择“每次”时，每个设备单次扫描可能会回调多次，不过信号强度会不同。"; ObjectID = "23O-ht-WyT"; */
+/* Class = "UILabel"; text = "When "First Time" is selected, each device will only return once for a single scan. When "Every Time" is selected, a single scan of each device may be called back multiple times, but the signal strength will be different."; ObjectID = "23O-ht-WyT"; */
 "23O-ht-WyT.text" = "When selecting first time，each device returns only once in a single scan. When selecting every time，a single scan per device may be called back multiple times，however, the signal strength will be different.";
 
-/* Class = "UILabel"; text = "kg 公斤 默认值\nlb磅，所有称都能够支持这个单位\n斤，称端如果不支持，则会显示kg\nst 英石，如果称端不支持会显示lb"; ObjectID = "9Ps-uL-odr"; */
+/* Class = "UILabel"; text = "Kg kg default value \nlb pounds, all scales can support this unit \n kg, if the end is not supported, it will display kg\nst stone, if it is not supported, it will display lb"; ObjectID = "9Ps-uL-odr"; */
 "9Ps-uL-odr.text" = "Kg default value \nlb pounds, all scales can support this unit \n kg, if the end is not supported, it will display kg\nst stone, if it is not supported, it will display lb";
 
-/* Class = "UILabel"; text = "身高"; ObjectID = "AIu-sC-jGQ"; */
+/* Class = "UILabel"; text = "height"; ObjectID = "AIu-sC-jGQ"; */
 "AIu-sC-jGQ.text" = "height";
 
-/* Class = "UILabel"; text = "设置用户的资料，计算体脂率时会需要"; ObjectID = "BEe-80-egg"; */
+/* Class = "UILabel"; text = "Set the user's data, you will need to calculate the body fat rate"; ObjectID = "BEe-80-egg"; */
 "BEe-80-egg.text" = "Set the user's data, you will need to calculate the body fat rate";
 
 /* Class = "UILabel"; text = "男的为“male”，女的为“female”。"; ObjectID = "CJ0-xi-cY8"; */

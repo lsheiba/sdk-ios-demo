@@ -10,7 +10,7 @@
 #import "QNCallBackConst.h"
 
 /**
- 该用户类必须使用 QNBleApi 类中 "- (QNUser *)buildUser:(NSString *)userId height:(int)height gender:(NSString *)gender birthday:(NSDate *)birthday callback:(QNResultCallback)callback" 方法创建用户
+ This user class must be used QNBleApi In class "- (QNUser *)buildUser:(NSString *)userId height:(int)height gender:(NSString *)gender birthday:(NSDate *)birthday callback:(QNResultCallback)callback" Method to create a user
  */
 
 @interface QNUser : NSObject

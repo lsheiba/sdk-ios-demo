@@ -7,15 +7,15 @@
 //
 
 typedef enum{
-    DeviceStyleNormal = 0,  //默认状态
-    DeviceStyleScanning = 1,//正在扫描
-    DeviceStyleLinging = 2,   //正在链接
-    DeviceStyleLingSucceed = 3, //链接成功
-    DeviceStyleMeasuringWeight = 4,//测量体重
-    DeviceStyleMeasuringResistance = 5,//测量阻抗
-    DeviceStyleMeasuringHeartRate = 6, //测量心率
-    DeviceStyleMeasuringSucceed = 7,     //测量完成
-    DeviceStyleDisconnect = 8,         //断开连接/称关机
+    DeviceStyleNormal = 0,  //Default state
+    DeviceStyleScanning = 1,//Scanning
+    DeviceStyleLinging = 2,   //Linking
+    DeviceStyleLingSucceed = 3, //Successful link
+    DeviceStyleMeasuringWeight = 4,//Measuring weight
+    DeviceStyleMeasuringResistance = 5,//Measuring impedance
+    DeviceStyleMeasuringHeartRate = 6, //Measuring heart rate
+    DeviceStyleMeasuringSucceed = 7,     //Measurement completed
+    DeviceStyleDisconnect = 8,         //Disconnect/called shutdown
 }DeviceStyle;
 
 
@@ -28,12 +28,12 @@ typedef enum{
 @property (weak, nonatomic) IBOutlet UIButton *scanBtn;
 @property (weak, nonatomic) IBOutlet UILabel *styleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *unstableWeightLabel;  //时时体重
+@property (weak, nonatomic) IBOutlet UILabel *unstableWeightLabel;  //Always weight
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @property (nonatomic, assign) DeviceStyle currentStyle;
-@property (nonatomic, strong) NSMutableArray *deviceAry; //扫描到外设数组
-@property (nonatomic, strong) NSMutableArray *scaleDataAry; //收到测量完成后数组
+@property (nonatomic, strong) NSMutableArray *deviceAry; //Scan to peripheral array
+@property (nonatomic, strong) NSMutableArray *scaleDataAry; //Array after receiving the measurement
 
 @property (nonatomic, strong) QNBleApi *bleApi;
 @end
@@ -67,33 +67,33 @@ typedef enum{
 - (void)setCurrentStyle:(DeviceStyle)currentStyle {
     _currentStyle = currentStyle;
     switch (_currentStyle) {
-        case DeviceStyleScanning: //正在扫描
+        case DeviceStyleScanning: //Scanning
             [self setScanningStyleUI];
             [self startScanDevice];
             break;
-        case DeviceStyleLinging: //正在链接
+        case DeviceStyleLinging: //Linking
             [self setLingingStyleUI];
             break;
-        case DeviceStyleLingSucceed: //链接成功
+        case DeviceStyleLingSucceed: //Successful link
             [self setLingSucceedStyleUI];
             break;
-        case DeviceStyleMeasuringWeight: //测量体重
+        case DeviceStyleMeasuringWeight: //Measuring weight
             [self setMeasuringWeightStyleUI];
             break;
-        case DeviceStyleMeasuringResistance: //测量阻抗
+        case DeviceStyleMeasuringResistance: //Measuring impedance
             [self setMeasuringSucceedStyleUI];
             break;
-        case DeviceStyleMeasuringHeartRate: //测量心率
+        case DeviceStyleMeasuringHeartRate: //Measuring heart rate
             [self setMeasuringSucceedStyleUI];
             break;
-        case DeviceStyleMeasuringSucceed://测量完成
+        case DeviceStyleMeasuringSucceed://Measurement completed
             [self setMeasuringResistanceStyleUI];
             break;
-        case DeviceStyleDisconnect://断开连接/称关机
+        case DeviceStyleDisconnect://Disconnect/called shutdown
             [self setDisconnectStyleUI];
             [self disconnectDevice];
             break;
-        default: //默认状态
+        default: //Default state
             [self setNormalStyleUI];
             [self stopScanDevice];
             break;
@@ -111,7 +111,7 @@ typedef enum{
 
 #pragma mark Linking status UI
 - (void)setLingingStyleUI {
-    [self.scanBtn setTitle:@"Disconnect" forState:UIControlStateNormal];
+    [self.scanBtn setTitle:@"Disconnect " forState:UIControlStateNormal];
     self.styleLabel.text = @"connecting";
     self.unstableWeightLabel.text = @"";
     self.tableView.hidden = YES;
