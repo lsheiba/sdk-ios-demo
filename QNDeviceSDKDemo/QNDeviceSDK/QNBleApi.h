@@ -19,7 +19,7 @@
  
  This SDK is a static library of the equipment connection tool of the light cow. It needs to obtain the "appId" from the light cattle official. Otherwise, the SDK cannot be used normally.
  
- current version【 0.3.1 】
+ current version【 0.4.0 】
  
  SDK minimum configuration 8.0 system
  
@@ -179,4 +179,15 @@
  */
 - (QNUser *)buildUser:(NSString *)userId height:(int)height gender:(NSString *)gender birthday:(NSDate *)birthday callback:(QNResultCallback)callback;
 
+/**
+ 建立用户模型
+ @param userId 用户id
+ @param height 用户身高
+ @param gender 用户性别 male female
+ @param birthday 用户的出生日期 age 3~80
+ @param athleteType 是否是运动员模式
+ @param callback 结果的回调
+ @return QNUser
+ */
+- (QNUser *)buildUser:(NSString *)userId height:(int)height gender:(NSString *)gender birthday:(NSDate *)birthday athleteType:(int)athleteType callback:(QNResultCallback)callback;
 @end
