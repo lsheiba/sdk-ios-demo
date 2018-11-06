@@ -20,6 +20,6 @@
         1. Fix the problem that the measurement data is immediately disconnected and the measurement is converted to stored data.
 
 【 0.4.0 】    2018-10-11
-        1."QNScaleTypeBodyFatRage"变更" QNScaleTypeBodyFatRate"
-        2.QNUser增加是否是运动员的参数
-        3.QNBleApi增加用户的构建方法
+        1."QNScaleTypeBodyFatRage"change" QNScaleTypeBodyFatRate"
+        2.QNUser Whether to increase the athlete's parameters
+        3.QNBleApi i increase the user's construction method
