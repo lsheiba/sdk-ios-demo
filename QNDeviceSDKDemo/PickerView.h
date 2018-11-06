@@ -5,7 +5,7 @@
 //  Created by Yolanda on 2018/3/15.
 //  Copyright © 2018年 Yolanda. All rights reserved.
 //
-//关系类型
+//Relationship type
 typedef enum{
     PickerViewTypeHeight = 0,//height
     PickerViewTypeBirthday= 1,//birthday
@@ -18,7 +18,7 @@ typedef enum{
 
 @protocol PickerViewDelegate <NSObject>
 @optional
-/** 确定生日*/
+/** Determine birthday*/
 - (void)confirmBirthday:(NSDate *)birthday;
 /** 确定身高*/
 - (void)confirmHeight:(NSInteger )height;
